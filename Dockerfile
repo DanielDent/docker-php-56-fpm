@@ -1,6 +1,6 @@
 FROM php:5.6-fpm
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
-    && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
