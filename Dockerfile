@@ -1,5 +1,7 @@
 FROM php:5.6-fpm
-RUN apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
+    && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -15,4 +17,5 @@ RUN apt-get update && apt-get install -y \
     && tar -xvvzf ioncube.tar.gz \
     && mv ioncube/ioncube_loader_lin_5.6.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
-    && docker-php-ext-enable ioncube_loader_lin_5.6
+    && docker-php-ext-enable ioncube_loader_lin_5.6 \
+    && mv /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader_lin_5.6.ini /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_5.6.ini
