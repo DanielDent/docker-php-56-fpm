@@ -19,3 +19,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && rm -Rf ioncube.tar.gz ioncube \
     && docker-php-ext-enable ioncube_loader_lin_5.6 \
     && mv /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader_lin_5.6.ini /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_5.6.ini
+CMD ["/usr/local/sbin/php-fpm", "--nodaemonize"]
