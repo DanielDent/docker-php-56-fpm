@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-install curl \
+    && docker-php-ext-install mysqli \
     && cd /tmp \
     && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
     && echo "a103d98d5940f8c7463f37db53f2a55fd1bc840835c3c564bf07c50b04a2b9b8  ioncube.tar.gz"|shasum -c \
