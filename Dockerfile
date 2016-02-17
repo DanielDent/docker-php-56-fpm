@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && docker-php-ext-install mysqli \
     && cd /tmp \
     && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
-    && echo "a103d98d5940f8c7463f37db53f2a55fd1bc840835c3c564bf07c50b04a2b9b8  ioncube.tar.gz"|shasum -c \
+    && echo "0a7acc2544ac6e58e8001902be328b3984b4c4d154b42bd9175c79f12edd8b87  ioncube.tar.gz"|shasum -c \
     && tar -xvvzf ioncube.tar.gz \
     && mv ioncube/ioncube_loader_lin_5.6.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
