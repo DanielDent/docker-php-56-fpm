@@ -12,12 +12,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && docker-php-ext-install gd \
     && docker-php-ext-install curl \
     && docker-php-ext-install mysqli \
+    && docker-php-ext-install pdo \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install json \
     && cd /tmp \
     && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
     && echo "0a7acc2544ac6e58e8001902be328b3984b4c4d154b42bd9175c79f12edd8b87  ioncube.tar.gz"|shasum -c \
     && tar -xvvzf ioncube.tar.gz \
     && mv ioncube/ioncube_loader_lin_5.6.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
-    && docker-php-ext-enable ioncube_loader_lin_5.6 \
-    && mv /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader_lin_5.6.ini /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_5.6.ini
+    && echo "zend_extension=ioncube_loader_lin_5.6.so" > /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_5.6.ini
 CMD ["/usr/local/sbin/php-fpm", "--nodaemonize"]
