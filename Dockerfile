@@ -17,7 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && docker-php-ext-install json \
     && cd /tmp \
     && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
-    && echo "ee414ce42f071b78ed90d2cc3e388e6a77f8fbefa0e2d092b93a4014552ae1fc  ioncube.tar.gz"|shasum -c \
+    && echo "dacf7351cb750e999a59c8167d8057a8d2ca72d2391b74444db1b251a76c2fba  ioncube.tar.gz"|shasum -c \
     && tar -xvvzf ioncube.tar.gz \
     && mv ioncube/ioncube_loader_lin_5.6.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
